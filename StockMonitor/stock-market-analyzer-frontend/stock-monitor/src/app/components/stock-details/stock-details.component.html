@@ -1,0 +1,17 @@
+<div>
+  <app-logout-button></app-logout-button>
+</div>
+<ng-container *ngIf="selectedStock$ | async as selectedStock">
+  <h2>{{ selectedStock.name }} ({{ selectedStock.symbol }})</h2>
+  <p>Current Price: {{ selectedStock.currentPrice }}</p>
+  <p>Price Change: {{ selectedStock.priceChange }}</p>
+  <p>Percentage Change: {{ selectedStock.percentageChange }}%</p>
+</ng-container>
+
+<div *ngIf="stockHistory$ | async as stockHistory">
+  <highcharts-chart
+    [Highcharts]="highcharts"
+    [options]="chartOptions"
+    style="width: 100%; height: 400px; display: block;">
+  </highcharts-chart>
+</div>

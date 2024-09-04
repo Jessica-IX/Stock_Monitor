@@ -1,0 +1,36 @@
+<div class="auth-container">
+  <div class="auth-forms">
+    <mat-card *ngIf="showLoginForm">
+      <mat-card-title>Login</mat-card-title>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" type="password">
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Login</button>
+        <mat-error *ngIf="loginError">{{ loginError }}</mat-error>
+      </form>
+      <button mat-button (click)="toggleForm()">Don't have an account? Register</button>
+    </mat-card>
+
+    <mat-card *ngIf="!showLoginForm">
+      <mat-card-title>Register</mat-card-title>
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" type="password">
+        </mat-form-field>
+        <button mat-raised-button color="accent" type="submit">Register</button>
+      </form>
+      <button mat-button (click)="toggleForm()">Already have an account? Login</button>
+    </mat-card>
+  </div>
+</div>
